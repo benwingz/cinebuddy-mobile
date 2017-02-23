@@ -1,6 +1,11 @@
 import { Injectable }    from '@angular/core';
 import { Headers, Http } from '@angular/http';
+import { tokenNotExpired } from 'angular2-jwt';
+import { AuthHttp } from 'angular2-jwt';
 
+import { Storage } from '@ionic/storage';
+
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
@@ -11,7 +16,11 @@ export class UserService {
     'Access-Control-Allow-Origin': '*'
   });
 
-  constructor(private http: Http) { }
+  constructor(
+    private http: Http,
+    private storage: Storage,
+    private authHttp: AuthHttp
+  ) { }
 
   getToken(credentials): Promise<any> {
     return this.http
@@ -21,8 +30,28 @@ export class UserService {
       .catch(this.handleError);
   }
 
+  isUserLoggedIn(): Promise<any> {
+    let storagePromise: any = this.storage.get('token');
+    return new Promise(
+      function(resolve, reject) {
+        storagePromise.then(
+          token => {
+            resolve(tokenNotExpired(null, token));
+          },
+          err => {
+            reject(false)
+          }
+        )
+      }
+    );
+  }
+
   getUserProfile(): Promise<any> {
-    return this.
+    return this.authHttp
+      .get(this.ApiBaseUrl + 'me/', {headers: this.headers})
+      .toPromise()
+      .then(res => res.json())
+      .catch(this.handleError)
   }
 
   private handleError(error: any): Promise<any> {
