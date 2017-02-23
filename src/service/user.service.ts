@@ -10,6 +10,7 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class UserService {
+  //private ApiBaseUrl = 'http://localhost:8080/api/';  // URL to web api
   private ApiBaseUrl = 'https://cinebuddy-api.herokuapp.com/api/';  // URL to web api
   private headers = new Headers({
     'Content-Type': 'application/json',

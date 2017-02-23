@@ -6,6 +6,8 @@ import { ArroundMe } from '../ArroundMe/arroundme';
 
 import { UserService } from '../../service/user.service';
 
+import { Storage } from '@ionic/storage';
+
 @Component({
   templateUrl: 'tabs.html'
 })
@@ -17,19 +19,20 @@ export class TabsPage implements OnInit {
   tab3Root: any = ArroundMe;
 
   constructor(
-    private UserService: UserService
+    private UserService: UserService,
+    private storage: Storage
   ) { }
 
-  /*getToken(): void {
+  getToken(): void {
     this.UserService.getToken({email: 'benjamin.roullet@gmail.com', password: 'cinebuddyROCKS'})
       .then( (res) => {
         this.storage.remove('token');
         this.storage.set('token', res.token);
       });
-  }*/
+  }
 
   ngOnInit(): void {
-    //this.getToken();
+    this.getToken();
   }
 
 }
