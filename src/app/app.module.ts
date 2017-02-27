@@ -9,9 +9,21 @@ import { MovieOfTheWeek } from '../pages/MovieOfTheWeek/movieoftheweek';
 import { TabsPage } from '../pages/tabs/tabs';
 import { UserService } from '../service/user.service';
 
+import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
 import { Storage } from '@ionic/storage';
 
 let storage = new Storage();
+
+const cloudSettings: CloudSettings = {
+  'core': {
+    'app_id': '47c569a5'
+  },
+  'auth': {
+    'facebook': {
+      'scope': ['public_profile', 'email', 'user_friends']
+    }
+  }
+};
 
 export function getAuthHttp(http) {
   return new AuthHttp(new AuthConfig({
@@ -32,7 +44,8 @@ export function getAuthHttp(http) {
   imports: [
     IonicModule.forRoot(MyApp, {
       tabsPlacement: 'top'
-    })
+    }),
+    CloudModule.forRoot(cloudSettings)
   ],
   bootstrap: [IonicApp],
   entryComponents: [

@@ -24,7 +24,6 @@ export class MovieOfTheWeek implements OnInit {
     /*this.storage.get('token').then(token => {
         console.log(tokenNotExpired(null, token)); // Returns true/false
     });*/
-    this.userService.getUserProfile().then( res => console.log(res));
     this.userService.isUserLoggedIn().then( res => console.log(res));
   }
 
