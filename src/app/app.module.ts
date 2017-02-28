@@ -7,6 +7,7 @@ import { MovieShowing } from '../pages/MovieShowing/movieshowing';
 import { ArroundMe } from '../pages/ArroundMe/arroundme';
 import { MovieOfTheWeek } from '../pages/MovieOfTheWeek/movieoftheweek';
 import { TabsPage } from '../pages/tabs/tabs';
+import { ConnectPage } from '../pages/connect/connect';
 import { UserService } from '../service/user.service';
 
 import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
@@ -39,7 +40,8 @@ export function getAuthHttp(http) {
     MovieShowing,
     ArroundMe,
     MovieOfTheWeek,
-    TabsPage
+    TabsPage,
+    ConnectPage
   ],
   imports: [
     IonicModule.forRoot(MyApp, {
@@ -53,7 +55,8 @@ export function getAuthHttp(http) {
     MovieShowing,
     ArroundMe,
     MovieOfTheWeek,
-    TabsPage
+    TabsPage,
+    ConnectPage
   ],
   providers: [
     {
