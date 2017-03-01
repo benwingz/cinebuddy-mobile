@@ -21,10 +21,7 @@ export class MovieOfTheWeek implements OnInit {
   }
 
   ngOnInit(): void {
-    /*this.storage.get('token').then(token => {
-        console.log(tokenNotExpired(null, token)); // Returns true/false
-    });*/
-    this.userService.isUserLoggedIn().then( res => console.log(res));
+    
   }
 
 }
