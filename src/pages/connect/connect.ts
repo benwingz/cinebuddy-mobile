@@ -45,7 +45,8 @@ export class ConnectPage {
       email: this.cloud_user.social.facebook.data.email,
       cloud_id: this.cloud_user.id,
       fb_id: this.cloud_user.social.facebook.uid,
-      fb_full_name: this.cloud_user.social.facebook.data.email
+      fb_full_name: this.cloud_user.social.facebook.data.email,
+      fb_profile_picture: this.cloud_user.social.facebook.data.profile_picture
     })
     .then( (res) => {
       if (res.success === true) {
@@ -74,7 +75,7 @@ export class ConnectPage {
             this.userForm.value.email,
             res.token,
             '',
-            this.userForm.value.email,
+            this.userForm.value.username,
           );
           this._UserService.updateUserProfile(newUser);
           this._UserService.getUserProfile();

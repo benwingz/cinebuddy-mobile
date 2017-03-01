@@ -14,8 +14,8 @@ export class TabsPage implements OnInit {
   // this tells the tabs component which Pages
   // should be each tab's root Page
   isUserLoggedIn: boolean;
-  tab1Root: any = MovieOfTheWeek;
-  tab2Root: any = MovieShowing;
+  tab1Root: any = MovieShowing;
+  tab2Root: any = MovieOfTheWeek;
   tab3Root: any = ArroundMe;
 
   constructor(
@@ -28,7 +28,7 @@ export class TabsPage implements OnInit {
   }
 
   ngOnInit(): void {
-    
+
   }
 
 }
