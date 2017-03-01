@@ -6,5 +6,20 @@
 -->
 
 <ion-content padding>
-  <button ion-button clear (click)="doFbConnect()">Connect with Facebook</button>
+  <form (ngSubmit)="register()" [formGroup]='userForm'>
+    <ion-item>
+      <ion-label color="primary" floating>Username</ion-label>
+      <ion-input formControlName="username"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" floating>Email</ion-label>
+      <ion-input  formControlName="email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" floating>Password</ion-label>
+      <ion-input type="password" formControlName="password"></ion-input>
+    </ion-item>
+    <button ion-button color="primary" type="submit" full>Go on</button>
+  </form>
+  <button ion-button full color="primary" (click)="doFbConnect()">Or Connect with Facebook</button>
 </ion-content>

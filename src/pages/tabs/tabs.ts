@@ -5,12 +5,15 @@ import { MovieOfTheWeek } from '../MovieOfTheWeek/movieoftheweek';
 import { MovieShowing } from '../MovieShowing/movieshowing';
 import { ArroundMe } from '../ArroundMe/arroundme';
 
+import { UserService } from '../../service/user.service'
+
 @Component({
   templateUrl: 'tabs.html'
 })
 export class TabsPage implements OnInit {
   // this tells the tabs component which Pages
   // should be each tab's root Page
+  isUserLoggedIn: boolean;
   tab1Root: any = MovieOfTheWeek;
   tab2Root: any = MovieShowing;
   tab3Root: any = ArroundMe;
@@ -18,11 +21,14 @@ export class TabsPage implements OnInit {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-  ) { }
+    private userService: UserService
+  )
+  {
+    this.userService.isTokenValid().then( tokenValid => console.log('token is', tokenValid));
+  }
 
   ngOnInit(): void {
-    //this.getToken();
-    //this.facebookAuth.login().then(res => this.initLogin(res));
+    
   }
 
 }
