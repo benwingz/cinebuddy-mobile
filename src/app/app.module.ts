@@ -13,8 +13,6 @@ import { UserService } from '../service/user.service';
 import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
 import { Storage } from '@ionic/storage';
 
-let storage = new Storage();
-
 const cloudSettings: CloudSettings = {
   'core': {
     'app_id': '47c569a5'
@@ -27,6 +25,7 @@ const cloudSettings: CloudSettings = {
 };
 
 export function getAuthHttp(http) {
+  let storage = new Storage();
   return new AuthHttp(new AuthConfig({
     noJwtError: true,
     globalHeaders: [{'Accept': 'application/json'}],
