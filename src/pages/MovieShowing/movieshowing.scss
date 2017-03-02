@@ -2,4 +2,15 @@ movie-showing {
   ion-slides {
     height:auto;
   }
+
+  .loading {
+    witdh: 100%;
+    text-align: center;
+    padding: 30px;
+
+    ion-spinner {
+      width: 100%;
+      height: 40px;
+    }
+  }
 }

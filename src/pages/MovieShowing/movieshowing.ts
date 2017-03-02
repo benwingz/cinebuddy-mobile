@@ -13,8 +13,6 @@ import { MovieListCmp } from '../../component/movielist/movielist.component';
 })
 
 export class MovieShowing {
-  private username: string;
-  private profile_pic: string;
   public movies: any;
 
   constructor(
@@ -23,9 +21,6 @@ export class MovieShowing {
     private movieService: MovieService
   )
   {
-    this.username = this.userService.currentUser.fb_full_name;
-    this.profile_pic= this.userService.currentUser.fb_profile_picture;
-
     this.movieService.getMoviesList().subscribe(
       (movies) => {
         this.movieService.movies = movies;
