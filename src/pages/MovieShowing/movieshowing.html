@@ -1,14 +1,19 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Salut {{username}}!
+      Salut {{userService.currentUser.fb_full_name}}!
     </ion-title>
     <button ion-button menuToggle>
-      <img [src]="profile_pic"/>
+      <img *ngIf="userService.currentUser.fb_profile_picture" [src]="userService.currentUser.fb_profile_picture"/>
+      <ion-icon *ngIf="!userService.currentUser.fb_profile_picture" name="menu"></ion-icon>
    </button>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <movie-list-cmp [movieList]="movies"></movie-list-cmp>
+  <ion-item *ngIf="!movies" class="chargement" text-center>
+    <p>Chargement des films</p>
+    <ion-spinner name="dots"></ion-spinner>
+  </ion-item>
+  <movie-list-cmp *ngIf="movies" [movieList]="movies"></movie-list-cmp>
 </ion-content>
