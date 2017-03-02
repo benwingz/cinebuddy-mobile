@@ -1,29 +1,25 @@
 import { Injectable }    from '@angular/core';
-import { Headers, Http } from '@angular/http';
+import { Headers } from '@angular/http';
 
+import { AuthHttp } from 'angular2-jwt';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
-export class UserService {
-  private ApiBaseUrl = 'http://localhost:8080/api/'; // URL to web api
+export class MovieService {
+  public movies: any;
+  //private ApiBaseUrl = 'http://192.168.1.52:8080/api/';  // URL to web api
+  private ApiBaseUrl = 'https://cinebuddy-api.herokuapp.com/api/';  // URL to web api
   private headers = new Headers({
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*'
   });
 
-  constructor(private http: Http) { }
+  constructor(private _authHttp: AuthHttp) { }
 
-  getToken(): Promise<any> {
-    return this.http
-      .post(this.ApiBaseUrl + 'authenticate/', JSON.stringify({email: 'benjamin.roullet@gmail.com', password: 'cinebuddyROCKS'}), {headers: this.headers})
-      .toPromise()
-      .then(res => res)
-      .catch(this.handleError);
-  }
-
-  private handleError(error: any): Promise<any> {
-    console.error('An error occurred', error); // for demo purposes only
-    return Promise.reject(error.message || error);
+  getMoviesList(): any {
+    return this._authHttp
+      .get(this.ApiBaseUrl + 'movies/', {headers: this.headers})
+        .map( movies => movies.json())
   }
 
   /*getHeroes(): Promise<Hero[]> {
