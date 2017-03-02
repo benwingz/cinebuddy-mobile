@@ -9,6 +9,9 @@ import { MovieOfTheWeek } from '../pages/MovieOfTheWeek/movieoftheweek';
 import { TabsPage } from '../pages/tabs/tabs';
 import { ConnectPage } from '../pages/connect/connect';
 import { UserService } from '../service/user.service';
+import { MovieService } from '../service/movie.service';
+import { MovieListCmp } from '../component/movielist/movielist.component';
+import { MovieCmp } from '../component/movie/movie.component'; 
 
 import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
 import { Storage } from '@ionic/storage';
@@ -40,7 +43,9 @@ export function getAuthHttp(http) {
     ArroundMe,
     MovieOfTheWeek,
     TabsPage,
-    ConnectPage
+    ConnectPage,
+    MovieListCmp,
+    MovieCmp
   ],
   imports: [
     IonicModule.forRoot(MyApp, {
@@ -55,7 +60,9 @@ export function getAuthHttp(http) {
     ArroundMe,
     MovieOfTheWeek,
     TabsPage,
-    ConnectPage
+    ConnectPage,
+    MovieListCmp,
+    MovieCmp
   ],
   providers: [
     {
@@ -68,6 +75,7 @@ export function getAuthHttp(http) {
       deps: [Http]
     },
     UserService,
+    MovieService,
     Storage]
 })
 export class AppModule {}

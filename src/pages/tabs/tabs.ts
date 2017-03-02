@@ -5,7 +5,8 @@ import { MovieOfTheWeek } from '../MovieOfTheWeek/movieoftheweek';
 import { MovieShowing } from '../MovieShowing/movieshowing';
 import { ArroundMe } from '../ArroundMe/arroundme';
 
-import { UserService } from '../../service/user.service'
+import { UserService } from '../../service/user.service';
+import { MovieService } from '../../service/movie.service';
 
 @Component({
   templateUrl: 'tabs.html'
@@ -21,7 +22,8 @@ export class TabsPage implements OnInit {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private userService: UserService
+    private userService: UserService,
+    private movieService: MovieService
   )
   {
     this.userService.isTokenValid().then( tokenValid => console.log('token is', tokenValid));
