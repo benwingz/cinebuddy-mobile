@@ -15,8 +15,8 @@ import 'rxjs/add/operator/map';
 export class UserService {
 
   currentUser : Cbuser;
-  private ApiBaseUrl = 'http://192.168.1.52:8080/api/';  // URL to web api
-  //private ApiBaseUrl = 'https://cinebuddy-api.herokuapp.com/api/';  // URL to web api
+  //private ApiBaseUrl = 'http://192.168.1.52:8080/api/';  // URL to web api
+  private ApiBaseUrl = 'https://cinebuddy-api.herokuapp.com/api/';  // URL to web api
   private headers = new Headers({
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*'
