@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { FacebookAuth, User } from '@ionic/cloud-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -13,7 +13,8 @@ import { Storage } from '@ionic/storage';
   selector: 'page-connect',
   templateUrl: 'connect.html'
 })
-export class ConnectPage {
+export class ConnectPage implements OnInit {
+  user:any;
   tabsPage: any = TabsPage;
   userForm: FormGroup;
 
@@ -75,6 +76,7 @@ export class ConnectPage {
             this.userForm.value.email,
             res.token,
             '',
+            '',
             this.userForm.value.username,
           );
           this._UserService.updateUserProfile(newUser);
@@ -83,6 +85,29 @@ export class ConnectPage {
         }
       }
     )
+  }
+
+  ngOnInit(): void {
+    this.storage.get('token').then(
+      (token) => {
+        this._UserService.getToken({token: token}).then( (res) => {
+          if (res.success === true) {
+            const newUser = new Cbuser(
+              '',
+              this.storage.get('email'),
+              res.token,
+              '',
+              '',
+              this.storage.get('name'),
+            );
+            this._UserService.updateUserProfile(newUser);
+            this._UserService.getUserProfile();
+            this.navCtrl.setRoot(this.tabsPage);
+          }
+        });
+      },
+      err => console.log(err)
+    );
   }
 
 }

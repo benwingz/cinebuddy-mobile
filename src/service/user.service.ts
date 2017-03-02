@@ -63,12 +63,18 @@ export class UserService {
   }
 
   private setLocalStorage(user: Cbuser): void {
-    this.removeLocalStorage()
+    this.removeLocalStorage();
+    this.storage.set('name', user.fb_full_name);
+    this.storage.set('email', user.email);
     this.storage.set('token', user.token);
+    (user.cloud_id) ? this.storage.set('cloud_id', user.cloud_id) : null;
   }
 
   private removeLocalStorage(): void {
+    this.storage.remove('email');
     this.storage.remove('token');
+    this.storage.remove('name');
+    this.storage.remove('cloud_id');
   }
 
   updateUserProfile(user: Cbuser): void {
