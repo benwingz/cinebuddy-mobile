@@ -23,9 +23,8 @@ export class MovieShowing {
   {
     this.movieService.getMoviesList().subscribe(
       (movies) => {
-        this.movieService.movies = movies;
         this.movies = movies;
-        console.log(this.movieService.movies);
+        //console.log(this.movies);
       },
       (error) => {
         console.log(error);
