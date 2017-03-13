@@ -13,11 +13,5 @@ export class MovieListCmp {
 
   @Input('movieList') movies:any;
 
-  constructor()
-  {
-    console.log('Movies in movielist', this.movies);
-  }
-
-
-
+  constructor(){}
 }
