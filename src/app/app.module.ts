@@ -8,13 +8,18 @@ import { ArroundMe } from '../pages/ArroundMe/arroundme';
 import { MovieOfTheWeek } from '../pages/MovieOfTheWeek/movieoftheweek';
 import { TabsPage } from '../pages/tabs/tabs';
 import { ConnectPage } from '../pages/connect/connect';
+
+import { MovieListCmp } from '../component/movielist/movielist.component';
+import { MovieCmp } from '../component/movie/movie.component';
+import { TheaterCmp } from '../component/theater/theater.component';
+
 import { UserService } from '../service/user.service';
 import { MovieService } from '../service/movie.service';
-import { MovieListCmp } from '../component/movielist/movielist.component';
-import { MovieCmp } from '../component/movie/movie.component'; 
+import { TheaterService } from '../service/theater.service';
 
 import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
 import { Storage } from '@ionic/storage';
+import { AgmCoreModule } from 'angular2-google-maps/core';
 
 const cloudSettings: CloudSettings = {
   'core': {
@@ -45,13 +50,17 @@ export function getAuthHttp(http) {
     TabsPage,
     ConnectPage,
     MovieListCmp,
-    MovieCmp
+    MovieCmp,
+    TheaterCmp
   ],
   imports: [
     IonicModule.forRoot(MyApp, {
       tabsPlacement: 'top'
     }),
-    CloudModule.forRoot(cloudSettings)
+    CloudModule.forRoot(cloudSettings),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyB17hTGIPwjnR_rs6W0mTSM5yxzkyDqSxY'
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -62,7 +71,8 @@ export function getAuthHttp(http) {
     TabsPage,
     ConnectPage,
     MovieListCmp,
-    MovieCmp
+    MovieCmp,
+    TheaterCmp
   ],
   providers: [
     {
@@ -76,6 +86,7 @@ export function getAuthHttp(http) {
     },
     UserService,
     MovieService,
+    TheaterService,
     Storage]
 })
 export class AppModule {}
