@@ -4,7 +4,8 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   selector: 'movie-cmp',
   template: `
   <img class="poster" width="100%" [src]="movie.poster_path"/>
-  <p>{{movie.overview}}</p>`
+  <p>{{movie.overview}}</p>
+  <button ion-button (click)="selectMovie()">Trouver une séance</button>`
 
 })
 export class MovieCmp {

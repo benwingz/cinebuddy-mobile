@@ -22,6 +22,12 @@ export class MovieService {
         .map( movies => movies.json())
   }
 
+  getMovieDetail(id: number): any{
+    return this._authHttp
+      .get(this.ApiBaseUrl + 'movie/' + id.toString(), {headers: this.headers})
+        .map( movie => movie.json())
+  }
+
   /*getHeroes(): Promise<Hero[]> {
     return this.http.get(this.heroesUrl)
                .toPromise()

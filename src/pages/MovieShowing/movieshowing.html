@@ -15,5 +15,5 @@
     <p>Chargement des films</p>
     <ion-spinner name="dots"></ion-spinner>
   </ion-item>
-  <movie-list-cmp *ngIf="movies" [movieList]="movies"></movie-list-cmp>
+  <movie-list-cmp *ngIf="movies" [movieList]="movies" (movieSelected)="findTheater($event)"></movie-list-cmp>
 </ion-content>
