@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 
 @Component({
   selector: 'arround-me',
@@ -8,8 +8,12 @@ import { NavController } from 'ionic-angular';
 })
 export class ArroundMe {
 
-  constructor(public navCtrl: NavController) {
-
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams
+  ) {
+    let movie = navParams.get('movieId');
+    console.log("movie passed", movie);
   }
 
 }

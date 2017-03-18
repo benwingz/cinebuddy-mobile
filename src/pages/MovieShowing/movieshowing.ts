@@ -7,6 +7,8 @@ import { MovieService } from '../../service/movie.service';
 
 import { MovieListCmp } from '../../component/movielist/movielist.component';
 
+import { FindtheaterPage } from '../findtheater/findtheater';
+
 @Component({
   selector: 'movie-showing',
   templateUrl: 'movieshowing.html'
@@ -30,5 +32,9 @@ export class MovieShowing {
         console.log(error);
       }
     )
+  }
+
+  findTheater(movie): any {
+    this.navCtrl.push(FindtheaterPage, { movieId: movie.idShowtimeProvider });
   }
 }

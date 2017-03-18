@@ -17,8 +17,8 @@ import { TheaterService } from '../../service/theater.service';
     [zoom]="12">
       <sebm-google-map-marker
         *ngFor="let theater of theaters"
-        [latitude]="theater.geoloc.lat"
-        [longitude]="theater.geoloc.long"
+        [latitude]="theater.geometry.location.lat"
+        [longitude]="theater.geometry.location.lng"
         [title]="theater.name">
         </sebm-google-map-marker>
   </sebm-google-map>
@@ -27,7 +27,7 @@ import { TheaterService } from '../../service/theater.service';
 export class TheaterCmp implements OnInit {
 
   @Input() search:string;
-  @Input() movie:string;
+  @Input() movie:number;
   initlat:number;
   initlng:number;
   theaters:any;
@@ -40,6 +40,7 @@ export class TheaterCmp implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log("Movie passed", this.movie);
     this.getUserLocation();
   }
 
@@ -47,27 +48,35 @@ export class TheaterCmp implements OnInit {
     Geolocation.getCurrentPosition().then((resp) => {
       this.initlat = resp.coords.latitude;
       this.initlng = resp.coords.longitude;
-      console.log('initlat:' + this.initlat + ' & initlng: ' + this.initlng);
-      this.getTheater();
+      this.getTheaterNearBy();
     }).catch((error) => {
-      console.log('Error getting location', error);
       this.initlat = 45.7579341;
       this.initlng = 4.7650812;
-      this.getTheater();
+      this.getTheaterNearBy();
     });
   }
 
-  getTheater() : void {
-    if (this.movie) {
-      console.log('Movie is:', this.movie);
-    } else {
-      this.theaterService.getTheaterList(this.initlat, this.initlng)
+  getTheaterNearBy() : void {
+    if (!this.movie) {
+      this.theaterService.getTheaterArround(this.initlat, this.initlng)
         .subscribe(
           (theatersList) => {
             this.theaters = theatersList;
+            //this.theaters = theatersList;
           },
           (error) => {
-            console.log(error);
+            console.log("error", error);
+          }
+        )
+    }else {
+      this.theaterService.getTheaterFromMovie(this.initlat, this.initlng, this.movie)
+        .subscribe(
+          (theatersList) => {
+            //this.theaters = theatersList;
+            console.log("showtime output:", theatersList);
+          },
+          (error) => {
+            console.log("error", error);
           }
         )
     }

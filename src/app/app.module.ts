@@ -8,6 +8,7 @@ import { ArroundMe } from '../pages/ArroundMe/arroundme';
 import { MovieOfTheWeek } from '../pages/MovieOfTheWeek/movieoftheweek';
 import { TabsPage } from '../pages/tabs/tabs';
 import { ConnectPage } from '../pages/connect/connect';
+import { FindtheaterPage } from '../pages/findtheater/findtheater';
 
 import { MovieListCmp } from '../component/movielist/movielist.component';
 import { MovieCmp } from '../component/movie/movie.component';
@@ -49,6 +50,7 @@ export function getAuthHttp(http) {
     MovieOfTheWeek,
     TabsPage,
     ConnectPage,
+    FindtheaterPage,
     MovieListCmp,
     MovieCmp,
     TheaterCmp
@@ -70,6 +72,7 @@ export function getAuthHttp(http) {
     MovieOfTheWeek,
     TabsPage,
     ConnectPage,
+    FindtheaterPage,
     MovieListCmp,
     MovieCmp,
     TheaterCmp

@@ -22,6 +22,18 @@ export class TheaterService {
         .map( theaters => theaters.json())
   }
 
+  getTheaterArround(lat: number, lng: number) {
+    return this._authHttp
+      .get(this.ApiBaseUrl + 'theaternearby/?lat=' + lat +'&lng=' + lng, {headers: this.headers})
+      .map( theaters => theaters.json())
+  }
+
+  getTheaterFromMovie(lat: number, lng: number, movie: number) {
+    return this._authHttp
+      .get(this.ApiBaseUrl + 'showtime/?lat=' + lat +'&lng=' + lng + '&movie=' + movie, {headers: this.headers})
+      .map( theaters => theaters.json())
+  }
+
   /*getHeroes(): Promise<Hero[]> {
     return this.http.get(this.heroesUrl)
                .toPromise()
