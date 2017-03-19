@@ -34,20 +34,4 @@ export class TheaterService {
       .map( theaters => theaters.json())
   }
 
-  /*getHeroes(): Promise<Hero[]> {
-    return this.http.get(this.heroesUrl)
-               .toPromise()
-               .then(response => response.json().data as Hero[])
-               .catch(this.handleError);
-  }
-
-  create(name: string): Promise<Hero>{
-    return this.http
-      .post(this.heroesUrl, JSON.stringify({name: name}), {headers: this.headers})
-      .toPromise()
-      .then(res => res.json().data)
-      .catch(this.handleError);
-  }*/
-
-
 }
