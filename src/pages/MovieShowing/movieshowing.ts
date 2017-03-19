@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 
-import { NavController } from 'ionic-angular';
+import { NavController, Content } from 'ionic-angular';
 
 import { UserService } from '../../service/user.service';
 import { MovieService } from '../../service/movie.service';
@@ -16,6 +16,7 @@ import { FindtheaterPage } from '../findtheater/findtheater';
 
 export class MovieShowing {
   public movies: any;
+  private hideControl: boolean = false;
 
   constructor(
     public navCtrl: NavController,
@@ -32,6 +33,14 @@ export class MovieShowing {
         console.log(error);
       }
     )
+  }
+
+  onScroll($event): void {
+    if($event.scrollTop >100) {
+      this.hideControl = true;
+    } else {
+      this.hideControl = false;
+    }
   }
 
   findTheater(movie): any {

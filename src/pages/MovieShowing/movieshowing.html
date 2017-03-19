@@ -10,10 +10,15 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding (ionScroll)="onScroll($event)">
   <ion-item *ngIf="!movies" class="chargement" text-center>
     <p>Chargement des films</p>
     <ion-spinner name="dots"></ion-spinner>
   </ion-item>
-  <movie-list-cmp *ngIf="movies" [movieList]="movies" (movieSelected)="findTheater($event)"></movie-list-cmp>
+  <movie-list-cmp
+    *ngIf="movies"
+    [movieList]="movies"
+    [hiddenControls]="hideControl"
+    (movieSelected)="findTheater($event)">
+  </movie-list-cmp>
 </ion-content>
