@@ -1,0 +1,48 @@
+<ion-item *ngIf="!initlat || !initlng" class="chargement" text-center>
+  <p>Récupération des cinémas</p>
+  <ion-spinner name="dots"></ion-spinner>
+</ion-item>
+<sebm-google-map
+  *ngIf="initlat && initlng"
+  [latitude]="initlat"
+  [longitude]="initlng"
+  [zoom]="12"
+  [disableDefaultUI]="true"
+  [zoomControl]="false">
+    <sebm-google-map-marker
+      *ngFor="let theater of theaters"
+      [latitude]="theater.geometry.location.lat"
+      [longitude]="theater.geometry.location.lng"
+      [title]="theater.name"
+      (markerClick)="clickMarkerFromTheater(theater)">
+    </sebm-google-map-marker>
+    <sebm-google-map-marker
+      *ngFor="let showtime of showtimes"
+      [latitude]="showtime.place.theater.geoloc.lat"
+      [longitude]="showtime.place.theater.geoloc.long"
+      [title]="showtime.place.theater.name"
+      (markerClick)="clickMarkerFromShowtime(showtime)">
+    </sebm-google-map-marker>
+</sebm-google-map>
+<ion-card *ngIf="theaterSelected" class="card-over-map">
+  <ion-card-header>{{theaterSelected.name}}</ion-card-header>
+  <ion-card-content>{{theaterSelected.vicinity}}</ion-card-content>
+</ion-card>
+<ion-card *ngIf="showtimeSelected" class="card-over-map">
+  <ion-card-header>
+    {{showtimeSelected.place.theater.name}} :
+    <p>
+      <span
+        *ngFor="let showtime of showtimeSelected.movieShowtimes; let i=index"
+        class="movie-version"
+        id="{{i}}"
+        [class.selected]="i == 0">
+      {{showtime.version.$ | filmversion}}
+      <span *ngIf="showtime.screenFormat.$ !== 'Numérique'">-{{showtime.screenFormat.$}}</span>
+    </span>
+    </p>
+  </ion-card-header>
+  <ion-card-content>
+    <p *ngFor="let showtime of showtimeSelected.movieShowtimes let i=index" id="showtime{{i}}"></p>
+  </ion-card-content>
+</ion-card>

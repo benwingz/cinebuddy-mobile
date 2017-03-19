@@ -5,24 +5,7 @@ import { TheaterService } from '../../service/theater.service';
 
 @Component({
   selector: 'theater-cmp',
-  template: `
-  <ion-item *ngIf="!initlat || !initlng" class="chargement" text-center>
-    <p>Récupération des cinémas</p>
-    <ion-spinner name="dots"></ion-spinner>
-  </ion-item>
-  <sebm-google-map
-    *ngIf="initlat && initlng"
-    [latitude]="initlat"
-    [longitude]="initlng"
-    [zoom]="12">
-      <sebm-google-map-marker
-        *ngFor="let theater of theaters"
-        [latitude]="theater.geometry.location.lat"
-        [longitude]="theater.geometry.location.lng"
-        [title]="theater.name">
-        </sebm-google-map-marker>
-  </sebm-google-map>
-  `
+  templateUrl: `theater.component.html`
 })
 export class TheaterCmp implements OnInit {
 
@@ -31,6 +14,9 @@ export class TheaterCmp implements OnInit {
   initlat:number;
   initlng:number;
   theaters:any;
+  showtimes:any;
+  theaterSelected:any;
+  showtimeSelected:any;
 
   constructor(
     private theaterService:TheaterService
@@ -42,6 +28,18 @@ export class TheaterCmp implements OnInit {
   ngOnInit(): void {
     console.log("Movie passed", this.movie);
     this.getUserLocation();
+  }
+
+  clickMarkerFromTheater(theater) {
+    this.initlat = theater.geometry.location.lat;
+    this.initlng = theater.geometry.location.lng;
+    this.theaterSelected = theater;
+  }
+
+  clickMarkerFromShowtime(showtime) {
+    this.initlat = showtime.place.theater.geoloc.lat;
+    this.initlng = showtime.place.theater.geoloc.long;
+    this.showtimeSelected = showtime;
   }
 
   getUserLocation() : void{
@@ -71,15 +69,19 @@ export class TheaterCmp implements OnInit {
     }else {
       this.theaterService.getTheaterFromMovie(this.initlat, this.initlng, this.movie)
         .subscribe(
-          (theatersList) => {
-            //this.theaters = theatersList;
-            console.log("showtime output:", theatersList);
+          (stream) => {
+            this.showtimes = this.getShowtimePlaces(stream);
+            console.log("showtime output:", stream);
           },
           (error) => {
             console.log("error", error);
           }
         )
     }
+  }
+
+  getShowtimePlaces(stream): void {
+    return stream.feed.theaterShowtimes;
   }
 
 }
