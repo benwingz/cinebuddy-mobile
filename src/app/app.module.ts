@@ -22,6 +22,8 @@ import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
 import { Storage } from '@ionic/storage';
 import { AgmCoreModule } from 'angular2-google-maps/core';
 
+import { FilmVersionPipe } from '../pipes/filmversion.pipe';
+
 const cloudSettings: CloudSettings = {
   'core': {
     'app_id': '47c569a5'
@@ -53,7 +55,8 @@ export function getAuthHttp(http) {
     FindtheaterPage,
     MovieListCmp,
     MovieCmp,
-    TheaterCmp
+    TheaterCmp,
+    FilmVersionPipe
   ],
   imports: [
     IonicModule.forRoot(MyApp, {
