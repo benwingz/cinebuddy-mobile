@@ -1,0 +1,17 @@
+<div class="controls" [@controlsShow]="showControls">
+  <ion-icon
+    name="arrow-dropleft-circle"
+    class="left"
+    (click)="goBack()">
+  </ion-icon>
+  <ion-icon
+    name="arrow-dropright-circle"
+    class="right"
+    (click)="goForward()">
+  </ion-icon>
+</div>
+<ion-slides #Slides>
+  <ion-slide *ngFor="let movie of movies">
+    <movie-cmp [movie]="movie" (selectedMovie)="selectMovie($event)"></movie-cmp>
+  </ion-slide>
+</ion-slides>
