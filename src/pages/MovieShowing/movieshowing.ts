@@ -16,7 +16,7 @@ import { FindtheaterPage } from '../findtheater/findtheater';
 
 export class MovieShowing {
   public movies: any;
-  private hideControl: boolean = false;
+  private controlsState: String = 'shown';
 
   constructor(
     public navCtrl: NavController,
@@ -37,9 +37,9 @@ export class MovieShowing {
 
   onScroll($event): void {
     if($event.scrollTop >100) {
-      this.hideControl = true;
+      this.controlsState = 'hidden';
     } else {
-      this.hideControl = false;
+      this.controlsState = 'shown';
     }
   }
 

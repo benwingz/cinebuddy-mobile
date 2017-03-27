@@ -18,7 +18,7 @@
   <movie-list-cmp
     *ngIf="movies"
     [movieList]="movies"
-    [hiddenControls]="hideControl"
+    [controlsState]="controlsState"
     (movieSelected)="findTheater($event)">
   </movie-list-cmp>
 </ion-content>
