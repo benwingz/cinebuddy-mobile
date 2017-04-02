@@ -33,12 +33,9 @@
     {{showtimeSelected.place.theater.name}} :
     <p>
       <span
-        *ngFor="let showtime of showtimeSelected.movieShowtimes; let i=index"
-        class="movie-version"
-        id="{{i}}"
-        [class.selected]="i == 0">
-      {{showtime.version.$ | filmversion}}
-      <span *ngIf="showtime.screenFormat.$ !== 'Numérique'">-{{showtime.screenFormat.$}}</span>
+        *ngFor="let showtime of showtimeService.getUniqueShowtimeVersion(showtimeSelected.movieShowtimes)"
+        class="movie-version">
+      {{showtime}}
     </span>
     </p>
   </ion-card-header>

@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Geolocation } from 'ionic-native';
 
 import { TheaterService } from '../../service/theater.service';
+import { ShowtimeService } from '../../service/showtime.service';
 
 @Component({
   selector: 'theater-cmp',
@@ -19,7 +20,8 @@ export class TheaterCmp implements OnInit {
   showtimeSelected:any;
 
   constructor(
-    private theaterService:TheaterService
+    private theaterService:TheaterService,
+    private showtimeService: ShowtimeService
   )
   {
 
