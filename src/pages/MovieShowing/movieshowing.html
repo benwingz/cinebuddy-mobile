@@ -10,7 +10,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding (ionScroll)="onScroll($event)">
+<ion-content (ionScroll)="onScroll($event)">
   <ion-item *ngIf="!movies" class="chargement" text-center>
     <p>Chargement des films</p>
     <ion-spinner name="dots"></ion-spinner>
