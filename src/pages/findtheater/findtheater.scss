@@ -1,3 +1,20 @@
 page-findtheater {
-
+  ion-header {
+    height: 100px;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+    background-color: #f8f8f8;
+    .toolbar{
+      min-height: 100px;
+    }
+    .toolbar-background {
+      background-color: rgba(0, 0, 0, 0);
+    }
+    .back-button {
+      color: white;
+      border: 1px black solid;
+    }
+  }
 }

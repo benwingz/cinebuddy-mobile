@@ -44,6 +44,6 @@ export class MovieShowing {
   }
 
   findTheater(movie): any {
-    this.navCtrl.push(FindtheaterPage, { movieId: movie.idShowtimeProvider });
+    this.navCtrl.push(FindtheaterPage, { movie: movie });
   }
 }

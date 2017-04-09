@@ -11,7 +11,7 @@ import { ShowtimeService } from '../../service/showtime.service';
 export class TheaterCmp implements OnInit {
 
   @Input() search:string;
-  @Input() movie:number;
+  @Input() movie:Object;
   initlat:number;
   initlng:number;
   theaters:any;

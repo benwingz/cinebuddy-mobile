@@ -15,7 +15,7 @@ export class FindtheaterPage {
   movie: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.movie = navParams.get('movieId');
+    this.movie = navParams.get('movie');
   }
 
   ionViewDidLoad() {
