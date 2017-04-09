@@ -61,7 +61,7 @@ export function getAuthHttp(http) {
   ],
   imports: [
     IonicModule.forRoot(MyApp, {
-      tabsPlacement: 'top'
+      tabsPlacement: 'bottom'
     }),
     CloudModule.forRoot(cloudSettings),
     AgmCoreModule.forRoot({
