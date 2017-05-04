@@ -7,7 +7,7 @@
 <ion-header [ngStyle]="{'background-image': 'url(' + movie.backdrop_path + ')' }">
 
   <ion-navbar>
-    <ion-title *ngIf="!movie.backdrop_path" [innerHTML]="movie.title"></ion-title>
+    <ion-title [innerHTML]="movie.title"></ion-title>
   </ion-navbar>
 
 </ion-header>

@@ -12,6 +12,8 @@
 </div>
 <ion-slides #Slides>
   <ion-slide *ngFor="let movie of movies">
-    <movie-cmp [movie]="movie" (selectedMovie)="selectMovie($event)"></movie-cmp>
+    <div class="slide-container">
+      <movie-cmp [movie]="movie" (selectedMovie)="selectMovie($event)"></movie-cmp>
+    </div>
   </ion-slide>
 </ion-slides>

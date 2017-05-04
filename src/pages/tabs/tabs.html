@@ -2,4 +2,8 @@
   <ion-tab [root]="tab1Root" tabTitle="À l'affiche"></ion-tab>
   <ion-tab [root]="tab2Root" tabTitle="Cette semaine"></ion-tab>
   <ion-tab [root]="tab3Root" tabTitle="Autour de moi"></ion-tab>
+  <button ion-button menuToggle>
+    <img *ngIf="userService.currentUser.fb_profile_picture" [src]="userService.currentUser.fb_profile_picture"/>
+    <ion-icon *ngIf="!userService.currentUser.fb_profile_picture" name="menu"></ion-icon>
+ </button>
 </ion-tabs>
