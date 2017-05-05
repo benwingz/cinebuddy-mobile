@@ -1,7 +1,11 @@
 movie-cmp {
-  /*img.poster {
-    position: absolute;
-    top: 0;
-    left: 0;
-  }*/
+  .poster {
+    // position: fixed;
+    // top: 0px;
+    width: 100%;
+    min-height: 550px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 }

@@ -1,16 +1,16 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Salut {{userService.currentUser.fb_full_name}}!
+      Salut
+      <span
+        *ngIf="userService.currentUser"
+        [innerHTML]="userService.currentUser.fb_full_name">
+      </span>!
     </ion-title>
-    <button ion-button menuToggle>
-      <img *ngIf="userService.currentUser.fb_profile_picture" [src]="userService.currentUser.fb_profile_picture"/>
-      <ion-icon *ngIf="!userService.currentUser.fb_profile_picture" name="menu"></ion-icon>
-   </button>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding (ionScroll)="onScroll($event)">
+<ion-content>
   <ion-item *ngIf="!movies" class="chargement" text-center>
     <p>Chargement des films</p>
     <ion-spinner name="dots"></ion-spinner>

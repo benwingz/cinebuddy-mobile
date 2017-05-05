@@ -28,9 +28,9 @@ export class TheaterService {
       .map( theaters => theaters.json())
   }
 
-  getTheaterFromMovie(lat: number, lng: number, movie: number) {
+  getTheaterFromMovie(lat: number, lng: number, movie: any) {
     return this._authHttp
-      .get(this.ApiBaseUrl + 'showtime/?lat=' + lat +'&lng=' + lng + '&movie=' + movie, {headers: this.headers})
+      .get(this.ApiBaseUrl + 'showtime/?lat=' + lat +'&lng=' + lng + '&movie=' + movie.idShowtimeProvider, {headers: this.headers})
       .map( theaters => theaters.json())
   }
 

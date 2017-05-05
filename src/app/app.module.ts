@@ -17,6 +17,7 @@ import { TheaterCmp } from '../component/theater/theater.component';
 import { UserService } from '../service/user.service';
 import { MovieService } from '../service/movie.service';
 import { TheaterService } from '../service/theater.service';
+import { ShowtimeService } from '../service/showtime.service';
 
 import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
 import { Storage } from '@ionic/storage';
@@ -60,7 +61,7 @@ export function getAuthHttp(http) {
   ],
   imports: [
     IonicModule.forRoot(MyApp, {
-      tabsPlacement: 'top'
+      tabsPlacement: 'bottom'
     }),
     CloudModule.forRoot(cloudSettings),
     AgmCoreModule.forRoot({
@@ -93,6 +94,7 @@ export function getAuthHttp(http) {
     UserService,
     MovieService,
     TheaterService,
+    ShowtimeService,
     Storage]
 })
 export class AppModule {}
