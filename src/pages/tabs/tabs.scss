@@ -1,0 +1,15 @@
+ion-tabs {
+  .tabbar {
+    padding-right: 50px;
+  }
+
+  .button-menutoggle {
+    position: absolute;
+    bottom:5px;
+    right: 5px;
+    z-index: 999;
+    background-color: rgba(0, 0, 0, 0)!important;
+    box-shadow: none;
+    color: grey;
+  }
+}

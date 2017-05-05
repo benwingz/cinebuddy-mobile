@@ -6,7 +6,7 @@ page-findtheater {
     background-repeat: no-repeat;
     background-blend-mode: multiply;
     background-position: center;
-    background-color: rgb(66, 134, 244);
+    background-color: map-get($colors, primary);
     color: white;
     font-size: 16px;
     font-weight: bold;
